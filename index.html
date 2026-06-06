@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday_Week_v1.0</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Consolas, monospace;
+overflow:auto;
+color:#00ff88;
+background:black;
+}
+
+/* Background image */
+
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:url("https://images.unsplash.com/photo-1515879218367-8466d910aaa4?fit=crop&w=1600&q=80");
+background-size:cover;
+background-position:center;
+filter:brightness(20%);
+z-index:-2;
+}
+
+/* overlay */
+
+body::after{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.5);
+z-index:-1;
+}
+
+/* stars */
+
+.star{
+position:fixed;
+width:2px;
+height:2px;
+background:white;
+border-radius:50%;
+animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+from{
+opacity:.2;
+}
+to{
+opacity:1;
+}
+}
+
+/* screens */
+
+.screen{
+display:none;
+height:100vh;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:15px;
+
+opacity:1;
+transition:1s;
+}
+
+.active{
+display:flex;
+}
+
+h1{
+font-size:55px;
+margin-bottom:30px;
+}
+
+pre{
+font-size:20px;
+line-height:1.3;
+white-space:pre-wrap;
+margin:0;
+}
+
+button{
+margin-top:30px;
+padding:16px 28px;
+font-size:18px;
+background:#161b22;
+color:#00ff88;
+border:1px solid #00ff88;
+border-radius:12px;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+background:#00ff88;
+color:black;
+}
+
+.progress-box{
+margin-top:25px;
+width:600px;
+height:25px;
+background:#222;
+border-radius:20px;
+overflow:hidden;
+}
+
+.progress{
+height:100%;
+width:0%;
+background:#00ff88;
+transition:.5s;
+}
+
+@media(max-width:768px){
+
+h1{
+font-size:35px;
+}
+
+pre{
+font-size:16px;
+}
+
+.progress-box{
+width:90%;
+}
+
+}
+
+#confetti-container{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+overflow:hidden;
+}
+
+.confetti{
+position:absolute;
+width:10px;
+height:10px;
+animation:fall 4s linear forwards;
+}
+
+@keyframes fall{
+
+0%{
+transform:translateY(-50px) rotate(0deg);
+opacity:1;
+}
+
+100%{
+transform:translateY(120vh) rotate(720deg);
+opacity:0;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div id="confetti-container"></div>
+
+<!-- SCREEN 1 -->
+
+<div class="screen active" id="screen1">
+
+<h1>Husky-OS</h1>
+
+<pre id="terminal"></pre>
+
+<div class="progress-box">
+<div class="progress" id="progress"></div>
+</div>
+
+<button id="musicButton" onclick="toggleMusic()">
+🎵 Enable Birthday Soundtrack
+</button>
+
+<audio id="bgMusic" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="nextScreen(2)">
+▶ Continue
+</button>
+
+</div>
+
+
+<!-- SCREEN 2 -->
+
+<div class="screen" id="screen2">
+
+<h1>🎉 RELEASE SUCCESSFUL 🎉</h1>
+
+<pre>
+
+Congratulations Husky!
+
+After surviving another year
+of unfixed bugs,
+last-minute deployments,
+and a tester who keeps reporting issues,
+
+you have officially entered
+
+✨ BIRTHDAY WEEK ✨
+
+</pre>
+
+<button onclick="nextScreen(3)">
+▶ View Deployment
+</button>
+
+</div>
+
+
+<!-- SCREEN 3 -->
+
+<div class="screen" id="screen3">
+
+<h1>🚀 CI/CD DEPLOYMENT</h1>
+
+<pre>
+
+BUILD SUCCESS
+
+✓ Unit Tests Passed
+✓ Monster Dependency Installed
+✓ Happiness Service Started
+✓ QA Approval Received
+
+Deploying Birthday_Week_v1.0...
+
+STATUS: SUCCESS
+
+</pre>
+
+<button onclick="nextScreen(4)">
+▶ Open Test Report
+</button>
+
+</div>
+
+
+
+<!-- SCREEN 4 -->
+
+<div class="screen" id="screen4">
+
+<h1>
+
+📋 TEST REPORT #2026
+
+</h1>
+
+<pre>
+
+Tester: Your Favourite Tester ❤️
+Developer: Husky
+
+
+BUGS FOUND
+
+❌ Doesn't listen to tester feedback
+❌ Says "works on my machine"
+❌ Marks valid bugs as
+"cannot reproduce"
+❌ Monster dependency exceeds
+recommended limits
+
+KNOWN FEATURES
+
+✅ Smart
+✅ Kind
+✅ Annoyingly stubborn
+✅ Somehow fixes everything eventually
+
+
+Verdict:
+
+PASSED ❤️
+
+</pre>
+
+<button onclick="nextScreen(5)">
+▶ Developer Facts
+</button>
+
+</div>
+
+
+
+
+<!-- SCREEN 5 -->
+
+<div class="screen" id="screen5">
+
+<h1>
+
+💻 DEVELOPER FACTS</h1>
+
+<pre>
+if (testerReportsBug) {
+    developer.reply(
+    "works on my machine");
+}
+while(monsterSupply > 0){
+    developer.keepCoding();
+}
+while(birthday != today){
+    tester.startCelebrating();
+}
+return "LEGENDARY";
+
+</pre>
+
+
+<h2 style="margin-top:40px">
+🥤 Monster Energy Level
+</h2>
+
+
+<div class="progress-box">
+
+<div class="progress"
+style="width:100%"></div>
+
+</div>
+
+
+<pre>
+
+████████████████ 100%
+
+Status:
+
+FULLY CAFFEINATED
+
+Warning:
+
+Productivity levels exceed
+safe limits.
+
+</pre>
+
+
+<button onclick="nextScreen(6)">
+▶ Birthday Reward
+</button>
+
+</div>
+
+
+<!-- SCREEN 6 -->
+
+<div class="screen" id="screen6">
+
+<h1>🎂 HAPPY BIRTHDAY WEEK 🎂</h1>
+
+<pre>
+
+      i i i i
+     =========
+    | HAPPY   |
+    | BIRTHDAY|
+    | HUSKY   |
+     =========
+
+To the most stubborn developer,
+
+May your code compile on the first try,
+your deployments succeed,
+your bugs be reproducible,
+and your tester annoy you
+for many years to come.
+
+— Your Favorite Tester ❤️
+
+</pre>
+
+<button onclick="blowCandles()">
+🎂 Blow Candles
+</button>
+
+</div>
+
+
+
+<!-- SCREEN 7 -->
+
+<div class="screen" id="screen7">
+
+<h1>🏆 ACHIEVEMENT UNLOCKED</h1>
+
+<pre>
+
+HUSKY_BIRTHDAY_WEEK
+Rarity: LEGENDARY
+Status: ACTIVE
+
+
+Reward
+
++100 Happiness
++1000 Tester Complaints
+Lifetime Monster Buff
+
+</pre>
+
+<button onclick="nextScreen(8)">
+▶ Continue
+</button>
+
+</div>
+
+
+
+<!-- SCREEN 8 -->
+
+<div class="screen" id="screen8">
+
+<h1>⭐ SPECIAL RECOGNITION ⭐</h1>
+
+<pre>
+
+Awarded To
+
+Your Favorite Tester ❤️
+
+
+Reason
+
+For tirelessly reporting bugs,
+surviving "works on my machine",
+and making Birthday_Week_v1.0 possible.
+
+
+
+Status
+
+IRREPLACEABLE ❤️
+
+</pre>
+
+<button onclick="nextScreen(9)">
+▶ Final Credits
+</button>
+
+</div>
+
+
+
+
+<!-- SCREEN 9 -->
+
+<div class="screen" id="screen9">
+
+<h1>❤️ FINAL CREDITS ❤️</h1>
+
+<pre>
+
+Version: Birthday_Week_v1.0
+
+
+Developer: Husky
+
+QA Tester: Your Favorite Tester ❤️
+
+
+
+Build Status
+
+████████████████ 100%
+
+
+
+Release Type
+
+LEGENDARY
+
+
+
+Lifetime Support
+
+Enabled ❤️
+
+
+
+Thank you for using Husky-OS
+
+</pre>
+
+</div>
+
+<script>
+
+/* next screen */
+
+function nextScreen(number){
+
+document.querySelectorAll(".screen").forEach(screen=>{
+
+screen.style.opacity="0";
+
+setTimeout(()=>{
+screen.classList.remove("active");
+},400);
+
+});
+
+
+setTimeout(()=>{
+
+let next=document.getElementById("screen"+number);
+
+next.classList.add("active");
+
+next.style.opacity="0";
+
+setTimeout(()=>{
+next.style.opacity="1";
+},50);
+
+},400);
+
+}
+
+
+/* stars */
+
+for(let i=0;i<200;i++){
+
+let star=document.createElement("div");
+
+star.className="star";
+
+star.style.left=Math.random()*100+"vw";
+
+star.style.top=Math.random()*100+"vh";
+
+star.style.animationDelay=Math.random()*2+"s";
+
+document.body.appendChild(star);
+
+}
+
+
+/* terminal */
+
+const lines=[
+
+"Initializing Birthday_Week_v1.0...",
+"",
+"Installing Monster_v∞...",
+"Loading Husky.exe...",
+"Checking Stubbornness Module...",
+"Applying Birthday Patch...",
+"",
+"Synchronizing Happiness Service...",
+"",
+"BUILD STATUS: SUCCESS"
+
+];
+
+let terminal=document.getElementById("terminal");
+
+let index=0;
+
+function typeLine(){
+
+if(index<lines.length){
+
+terminal.innerHTML+=lines[index]+"<br>";
+
+document.getElementById("progress").style.width=
+((index+1)/lines.length)*100+"%";
+
+index++;
+
+setTimeout(typeLine,800);
+
+}
+
+}
+
+let musicPlaying = false;
+
+function toggleMusic(){
+
+const music = document.getElementById("bgMusic");
+const button = document.getElementById("musicButton");
+
+if(!musicPlaying){
+
+music.play();
+
+musicPlaying = true;
+
+button.innerHTML = "🔇 Mute Music";
+
+}
+else{
+
+music.pause();
+
+musicPlaying = false;
+
+button.innerHTML = "🎵 Enable Birthday Soundtrack";
+
+}
+
+}
+
+typeLine();
+
+function blowCandles(){
+
+launchConfetti();
+
+setTimeout(()=>{
+nextScreen(7);
+},3000);
+
+}
+
+
+function launchConfetti(){
+
+const colors=[
+"#ff0000",
+"#ff9900",
+"#ffff00",
+"#00ff00",
+"#0099ff",
+"#ff00ff"
+];
+
+for(let i=0;i<200;i++){
+
+let piece=document.createElement("div");
+
+piece.className="confetti";
+
+piece.style.background=
+colors[Math.floor(Math.random()*colors.length)];
+
+piece.style.left=Math.random()*100+"vw";
+
+piece.style.animationDelay=Math.random()*2+"s";
+
+piece.style.transform=
+"rotate("+Math.random()*360+"deg)";
+
+document
+.getElementById("confetti-container")
+.appendChild(piece);
+
+setTimeout(()=>{
+piece.remove();
+},5000);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
