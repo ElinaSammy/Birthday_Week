@@ -199,7 +199,7 @@ opacity:0;
 </div>
 
 <button id="musicButton" onclick="toggleMusic()">
-🎵 Enable Birthday Soundtrack
+🎵 Start Husky's Playlist
 </button>
 
 <button onclick="nextScreen(2)">
@@ -620,7 +620,7 @@ function toggleMusic(){
         bgMusic.play()
         .then(() => {
             musicPlaying = true;
-            button.innerHTML = "🔇 Mute Music";
+            button.innerHTML = "🔇 Pause Renran Mode";
         })
         .catch(err => {
             console.log(err);
