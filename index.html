@@ -606,31 +606,35 @@ setTimeout(typeLine,800);
 
 }
 
+let bgMusic = new Audio("music.mp3");
+bgMusic.loop = true;
+
 let musicPlaying = false;
 
 function toggleMusic(){
 
-const music = document.getElementById("bgMusic");
-const button = document.getElementById("musicButton");
+    const button = document.getElementById("musicButton");
 
-if(!musicPlaying){
+    if(!musicPlaying){
 
-music.play();
+        bgMusic.play()
+        .then(() => {
+            musicPlaying = true;
+            button.innerHTML = "🔇 Mute Music";
+        })
+        .catch(err => {
+            console.log(err);
+        });
 
-musicPlaying = true;
+    } else {
 
-button.innerHTML = "🔇 Mute Music";
+        bgMusic.pause();
 
-}
-else{
+        musicPlaying = false;
 
-music.pause();
+        button.innerHTML = "🎵 Enable Birthday Soundtrack";
 
-musicPlaying = false;
-
-button.innerHTML = "🎵 Enable Birthday Soundtrack";
-
-}
+    }
 
 }
 
