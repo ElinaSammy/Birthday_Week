@@ -20,6 +20,38 @@ color:#00ff88;
 background:black;
 }
 
+.chibi{
+
+width:220px;
+
+max-width:80%;
+
+margin-bottom:20px;
+
+animation:float 3s ease-in-out infinite;
+
+filter:drop-shadow(
+0 0 20px rgba(255,255,255,.5)
+);
+
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-10px);
+}
+
+100%{
+transform:translateY(0);
+}
+
+}    
+
 /* Background image */
 
 body::before{
@@ -258,6 +290,8 @@ opacity:0;
 <!-- SCREEN 2 -->
 
 <div class="screen" id="screen2">
+    
+<img src="husky-coding.png" class="chibi">
 
 <h1>🎉 RELEASE SUCCESSFUL 🎉</h1>
 
@@ -287,6 +321,8 @@ you have officially entered
 
 <div class="screen" id="screen3">
 
+<img src="bug-dump.png" class="chibi">
+    
 <h1>🚀 CI/CD DEPLOYMENT</h1>
 
 <pre>
@@ -316,6 +352,8 @@ STATUS: SUCCESS
 
 <div class="screen" id="screen4">
 
+<img src="best-tester.png" class="chibi">
+    
 <h1>
 
 📋 TEST REPORT #2026
@@ -423,6 +461,8 @@ safe limits.
 <!-- SCREEN 6 -->
 
 <div class="screen" id="screen6">
+
+<img src="cake-husky.png" class="chibi">    
 
 <h1>🎂 HAPPY BIRTHDAY WEEK 🎂</h1>
 
