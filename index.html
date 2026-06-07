@@ -20,20 +20,21 @@ color:#00ff88;
 background:black;
 }
 
+.screen h1,
+.screen pre,
+.screen button{
+text-align:left;
+}
+    
 .chibi{
+width:300px;        /* bigger */
+max-width:40%;      /* keeps it responsive */
 
-width:220px;
-
-max-width:80%;
-
-margin-bottom:20px;
+margin-bottom:0;    /* remove vertical stacking */
 
 animation:float 3s ease-in-out infinite;
 
-filter:drop-shadow(
-0 0 20px rgba(255,255,255,.5)
-);
-
+filter:drop-shadow(0 0 20px rgba(255,255,255,.5));
 }
 
 @keyframes float{
@@ -124,19 +125,28 @@ opacity:1;
 .screen{
 display:none;
 height:100vh;
-justify-content:center;
+width:100%;
+
+/* CHANGED: left-right layout instead of center stack */
+display:flex;
+flex-direction:row;
+justify-content:flex-start;
 align-items:center;
-flex-direction:column;
-text-align:center;
-padding:15px;
+
+text-align:left;
+padding:40px;
 
 opacity:1;
 transition:1s;
+gap:60px;
 }
 
-.active{
+.screen-content{
 display:flex;
-}
+flex-direction:column;
+justify-content:center;
+align-items:flex-start;
+}    
 
 h1{
 font-size:55px;
